@@ -13,6 +13,9 @@ class ViewController: UIViewController, MCSessionDelegate, MCNearbyServiceAdvert
   
   var peerID : MCPeerID!
   var session : MCSession!
+  var advertiser : MCNearbyServiceAdvertiser!
+  var browser : MCNearbyServiceBrowser!
+  let XXServiceType = "xx-servicetype"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,6 +49,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCNearbyServiceAdvert
   
   func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) {
     
+    println("Got an invitation")
     var didAccept = false
     let alert = UIAlertController(title: "You have been invited by \(peerID)", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
     let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -67,14 +71,20 @@ class ViewController: UIViewController, MCSessionDelegate, MCNearbyServiceAdvert
   
   @IBAction func didPressButton(sender: AnyObject) {
     println("Did Press Button")
-    let XXServiceType = "xx-service"
     
-    let advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: XXServiceType)
+    advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: XXServiceType)
     advertiser.delegate = self
     advertiser.startAdvertisingPeer()
     
   }
   
+  @IBAction func didPressBrowsingButton(sender: AnyObject) {
+    
+    browser = MCNearbyServiceBrowser(peer: peerID, serviceType: XXServiceType)
+    let browserVC = MCBrowserViewController(browser: browser, session: session)
+    self.presentViewController(browserVC, animated: true, completion: nil)
+    browser.startBrowsingForPeers()
+  }
   
 }
   

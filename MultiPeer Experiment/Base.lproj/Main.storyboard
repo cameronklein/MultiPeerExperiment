@@ -25,10 +25,21 @@
                                     <action selector="didPressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A8Y-eL-HxM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEy-E3-JuS">
+                                <rect key="frame" x="249" y="341" width="102" height="30"/>
+                                <state key="normal" title="Start Browsing">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressBrowsingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="llA-uu-w10"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qEy-E3-JuS" firstAttribute="top" secondItem="eGo-SY-Fex" secondAttribute="bottom" constant="26" id="2If-2d-0rw"/>
                             <constraint firstAttribute="centerX" secondItem="eGo-SY-Fex" secondAttribute="centerX" id="iah-tR-2zj"/>
+                            <constraint firstAttribute="centerX" secondItem="qEy-E3-JuS" secondAttribute="centerX" id="wSF-oI-eAF"/>
                             <constraint firstAttribute="centerY" secondItem="eGo-SY-Fex" secondAttribute="centerY" id="wwX-BT-Pwb"/>
                         </constraints>
                     </view>
